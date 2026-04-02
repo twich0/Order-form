@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Form</title>
+
+<style>
+fieldset{
+padding:20px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+input, textarea, select{
+padding:8px;
+margin-top:5px;
+margin-bottom:10px;
+width:250px;
+}
+
+button{
+padding:10px 20px;
+background:black;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+body{
+font-family: Arial;
+margin:40px;
+transition: all 0.4s ease;
+}
+
+/* Center after submit */
+.submitted-style{
+text-align:center;
+}
+
+/* BIG GREEN TITLE */
+.success-title{
+color: green;
+font-size: 84px;
+font-weight: 800;
+margin: 20px 0;
+letter-spacing: 1px;
+}
+
+/* Payment Pending */
+.payment-pending{
+color:#f1c40f;
+margin-top:20px;
+font-size:28px;
+}
+
+/* Hourglass */
+.hourglass{
+font-size:80px;
+margin-top:20px;
+animation: spin 2s linear infinite;
+}
+
+/* 🔵 BLUE SPINNER */
+.loader{
+border: 10px solid #f3f3f3;
+border-top: 10px solid #3498db; /* blue */
+border-radius: 50%;
+width: 120px;
+height: 120px;
+margin: 40px auto;
+animation: spin 1s linear infinite;
+
+/* glow effect */
+box-shadow: 0 0 15px rgba(52,152,219,0.6);
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+/* Fade-in */
+.fade-in{
+opacity:0;
+animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn{
+to{ opacity:1; }
+}
+</style>
+</head>
+
+<body>
+
+<p><strong>Order ID:</strong> <span id="orderID"></span></p>
+
+<h1>Order Form</h1>
+
+<p id="introText">Kindly proceed with order registration.</p>
+
+<form method="POST" action="https://formcarry.com/s/bItoDQJaK3C">
+<input type="hidden" name="order_id" id="order_id">
+
+<fieldset>
+<legend><h4>Personal Info</h4></legend>
+
+<label>Name:</label><br>
+<input type="text" name="name" required><br><br>
+
+<label>Phone number:</label><br>
+<input type="tel" name="phone" required><br><br>
+
+<label>Delivery Address:</label><br>
+<textarea name="address" rows="3" required></textarea><br><br>
+
+<label>Item(s) Ordered:</label><br>
+<input type="text" name="items"><br><br>
+
+<label>Size:</label>
+<input type="text" name="size" required>
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend><h4>Shipping and tracking info</h4></legend>
+
+<label>Item Price ($)</label><br>
+<input type="number" id="price" name="price" value="0" onchange="calculateTotal()">
+
+<h4>Select Shipping Method</h4>
+
+<label>
+Standard Shipping ($9)<br>
+<input type="checkbox" name="shipping" value="9" onchange="calculateTotal()">
+</label><br><br>
+
+<label>
+Expedited Shipping ($15)<br>
+<input type="checkbox" name="shipping" value="15" onchange="calculateTotal()">
+</label><br><br>
+
+<label>
+Overnight Shipping ($25)<br>
+<input type="checkbox" name="shipping" value="25" onchange="calculateTotal()">
+</label>
+
+<h3>Total: $<span id="total">0</span></h3>
+<input type="hidden" name="total_price" id="total_price">
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend><h4>Payment Method</h4></legend>
+
+<select id="payment" name="payment" required>
+<option value="">Select payment method</option>
+<option value="zelle">Zelle</option>
+<option value="paypal">PayPal</option>
+<option value="crypto">Crypto</option>
+<option value="etransfer">E-transfer</option>
+<option value="bank">Bank transfer</option>
+<option value="taptap">TapTap Send</option>
+<option value="cashapp">Cash App</option>
+</select>
+
+</fieldset>
+
+<br>
+
+<label>Additional Considerations</label><br>
+<textarea name="comments" rows="5"></textarea>
+
+<br><br>
+
+<button type="submit">Submit Order</button>
+
+</form>
+
+<script>
+
+function calculateTotal(){
+let price = document.getElementById("price").value;
+let shippingOptions = document.querySelectorAll('input[name="shipping"]:checked');
+
+let shippingCost = 0;
+
+shippingOptions.forEach(option => {
+shippingCost += Number(option.value);
+});
+
+let total = Number(price) + shippingCost;
+
+document.getElementById("total").innerText = total;
+document.getElementById("total_price").value = total;
+}
+
+function generateOrderID(){
+let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let randomLetter = letters.charAt(Math.floor(Math.random()*letters.length));
+let number = Math.floor(100000 + Math.random()*900000);
+let orderID = "ORD-" + randomLetter + number;
+
+document.getElementById("orderID").innerText = orderID;
+document.getElementById("order_id").value = orderID;
+}
+window.onload = generateOrderID;
+
+document.querySelector("form").addEventListener("submit", function(event){
+
+event.preventDefault();
+
+let form = this;
+let savedID = document.getElementById("orderID").innerText;
+
+/* 🔄 LOADING SCREEN */
+document.body.innerHTML = "";
+document.body.style.textAlign = "center";
+
+/* Text */
+let loadingText = document.createElement("h1");
+loadingText.innerText = "Processing Order...";
+loadingText.style.fontSize = "50px";
+
+/* Spinner */
+let spinner = document.createElement("div");
+spinner.classList.add("loader");
+
+/* Append */
+document.body.appendChild(loadingText);
+document.body.appendChild(spinner);
+
+/* ⏳ DELAY */
+setTimeout(() => {
+
+fetch(form.action, {
+method: "POST",
+body: new FormData(form),
+headers: {'Accept': 'application/json'}
+})
+.then(response => {
+
+if(response.ok){
+
+document.body.innerHTML = "";
+document.body.classList.add("submitted-style");
+
+/* ORDER ID */
+let id = document.createElement("p");
+id.innerText = "Order ID: " + savedID;
+id.style.fontSize = "24px";
+
+/* TITLE */
+let title = document.createElement("h1");
+title.innerText = "Order Submitted";
+title.classList.add("success-title");
+
+/* PAYMENT */
+let pending = document.createElement("p");
+pending.innerText = "Payment Pending...";
+pending.classList.add("payment-pending");
+
+/* HOURGLASS */
+let hourglass = document.createElement("div");
+hourglass.innerText = "⏳";
+hourglass.classList.add("hourglass");
+
+/* MESSAGE */
+let msg = document.createElement("p");
+msg.innerText = "Order received! Payment details will be provided shortly for order completion.";
+msg.style.color = "red";
+msg.style.fontSize = "30px";
+msg.style.fontWeight = "700";
+msg.style.maxWidth = "600px";
+msg.style.margin = "20px auto";
+
+/* APPEND */
+document.body.appendChild(id);
+document.body.appendChild(title);
+document.body.appendChild(pending);
+document.body.appendChild(hourglass);
+document.body.appendChild(msg);
+
+} else {
+alert("Submission failed");
+}
+
+});
+
+}, 2000);
+
+});
+</script>
+
+</body>
+</html>
