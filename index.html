@@ -38,7 +38,7 @@ body {
 .progress-container {
     position: relative;
     max-width: 850px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 50px auto;
 }
 
 .progress-wrapper {
@@ -49,6 +49,7 @@ body {
     z-index: 2;
 }
 
+/* Background Gray Line */
 .progress-line-bg {
     position: absolute;
     top: 26px;
@@ -60,6 +61,7 @@ body {
     z-index: 1;
 }
 
+/* Progressive Blue Line Fill */
 .progress-line-fill {
     position: absolute;
     top: 26px;
@@ -110,6 +112,7 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Active Highlight States */
 .tracker-step.active .circle {
     background: #2563eb;
     color: white;
@@ -136,77 +139,9 @@ body {
     border-radius: 24px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     border: 1px solid #f1f5f9;
-    position: relative;
 }
 
-/* Static Intro Layout Placement */
-.intro-container-block {
-    background: white;
-    padding: 35px 45px;
-    border-radius: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-    border: 1px solid #f1f5f9;
-    margin-bottom: 30px;
-}
-
-.intro-content {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.brand-text-header {
-    display: inline-block;
-    text-decoration: none;
-    margin-bottom: 25px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.brand-text-header:hover {
-    transform: scale(1.02);
-    opacity: 0.9;
-}
-
-.brand-text-header h1 {
-    font-size: 38px;
-    font-weight: 900;
-    color: #0f172a;
-    margin: 0;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.intro-content p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #475569;
-    margin-bottom: 25px;
-}
-
-.intro-text-preview {
-    display: inline;
-}
-
-.intro-text-more {
-    display: none;
-}
-
-.read-more-btn {
-    color: #2563eb;
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline;
-    text-decoration: underline;
-    margin-left: 4px;
-}
-
-.read-more-btn:hover {
-    color: #1d4ed8;
-}
-
+/* Step Header Setup */
 .step-header {
     display: flex;
     align-items: center;
@@ -241,6 +176,94 @@ body {
     font-size: 14px;
 }
 
+/* Left-accent border paragraph blocks */
+p.intro-paragraph {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    border-left: 5px solid #2563eb;
+}
+
+/* Read More Custom Trigger Design Styles */
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 0 0 16px;
+    margin-bottom: 18px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.read-more-btn:hover {
+    background: none;
+    color: #1d4ed8;
+}
+
+.read-more-btn svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.read-more-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapsible-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-left: 16px;
+    border-left: 5px solid #2563eb;
+}
+
+.highlight {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.order-id {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.main-site-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.2s ease;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.main-site-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* Clean Fieldset resets */
 fieldset {
     border: none;
     padding: 0;
@@ -318,37 +341,52 @@ label {
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
-.input-container input.invalid,
-.input-container textarea.invalid,
-.input-container select.invalid {
-    border-color: #ef4444 !important;
-    background-color: #fef2f2 !important;
-}
-
 .input-container input::placeholder,
 .input-container textarea::placeholder {
     color: #94a3b8;
 }
 
-.info-notice-paragraph {
-    font-size: 15px;
-    color: #1e40af;
-    background: #eff6ff;
-    border-left: 4px solid #3b82f6;
-    padding: 14px 18px;
-    border-radius: 0 12px 12px 0;
-    margin-top: -8px;
-    margin-bottom: 24px;
+/* Dynamic Payment Context Notice styling */
+.email-notice-box {
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 14.5px;
     font-weight: 500;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer Layout Elements */
 .form-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     border-top: 1px solid #f1f5f9;
     padding-top: 30px;
     margin-top: 10px;
+}
+
+.security-foot-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 12px;
 }
 
 button {
@@ -378,6 +416,7 @@ button.btn-back:hover {
     background: #e2e8f0;
 }
 
+/* Order Summary Box Layout Style */
 .order-summary {
     background: #f8fafc;
     padding: 25px 30px;
@@ -402,6 +441,7 @@ button.btn-back:hover {
     margin: 10px 0;
 }
 
+/* Trademark Footnote */
 .trademark-footer {
     margin-top: 35px;
     text-align: center;
@@ -413,83 +453,6 @@ button.btn-back:hover {
     opacity: 0.85;
 }
 
-/* --- Processing Overlay & Spinner Custom Mechanics --- */
-.processing-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 24px;
-    z-index: 10;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.status-indicator {
-    width: 80px;
-    height: 80px;
-    position: relative;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.spinner {
-    width: 100%;
-    height: 100%;
-    border: 6px solid #e2e8f0;
-    border-top: 6px solid #10b981; 
-    border-radius: 50%;
-    animation: rotateSpinner 1s linear infinite;
-    position: absolute;
-}
-
-.checkmark-tick {
-    display: none;
-    width: 40px;
-    height: 20px;
-    border-left: 6px solid #10b981;
-    border-bottom: 6px solid #10b981;
-    transform: rotate(-45deg);
-    margin-top: -10px;
-}
-
-@keyframes rotateSpinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.success-message-block {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.success-message-block h2 {
-    font-size: 32px;
-    font-weight: 800;
-    color: #0f172a;
-    margin: 0 0 12px 0;
-}
-
-.success-message-block p.greeting-subtext {
-    font-size: 16px;
-    color: #475569;
-    margin: 0 0 30px 0;
-    line-height: 1.5;
-}
-
 @media(max-width:768px) {
     .grid { grid-template-columns: 1fr; }
     .progress-container { margin-bottom: 30px; }
@@ -497,9 +460,8 @@ button.btn-back:hover {
     .circle { width: 44px; height: 44px; font-size: 15px; margin-bottom: 6px; }
     .tracker-step .label-text { font-size: 11px; }
     .page-title { font-size: 32px; }
-    .brand-text-header h1 { font-size: 28px; }
-    .form-card, .intro-container-block { padding: 25px; }
     .form-footer { flex-direction: column-reverse; gap: 20px; align-items: stretch; }
+    .security-foot-note { justify-content: center; }
     button { justify-content: center; }
 }
 </style>
@@ -511,50 +473,41 @@ button.btn-back:hover {
     <h1 class="page-title">Order Gateway</h1>
     <p class="subtitle">Secure multi-step portal to execute your configuration placements.</p>
 
-  
-            <p><strong>Welcome to the Order Gateway.</strong></p>
-            
-            <p>
-                <span class="intro-text-preview" id="introPreview">
-                    If the item you are looking for is currently out of stock or unavailable on our website, you can use this secure system to place an offline request. Our team will manually check our inventory network to fulfill your order...
-                </span>
-                <span class="intro-text-more" id="introMore">
-                    Once submitted, a unique Order ID will be generated for your request to help us track and process it safely. Please note that this form should only be completed once per request, as each order generates exactly one unique tracking code. We highly recommend reviewing all your order configurations carefully before proceeding to ensure accuracy.
-                </span>
-                <button type="button" class="read-more-btn" id="readMoreToggle" onclick="toggleIntroText()">Read More</button>
-            </p>
-        </div>
-    </div>
-
-    <!-- Step Progress Bar Tracker Component -->
-    <div class="progress-container" id="trackerUiContainer">
+    <div class="progress-container" id="progressTrackerSection">
         <div class="progress-line-bg"></div>
         <div class="progress-line-fill" id="activeProgressLine"></div>
-        
+       
         <div class="progress-wrapper">
             <div class="tracker-step active">
                 <div class="circle">1</div>
+                <div class="label-text">
+                    <span>Welcome</span>
+                    <span>Intro</span>
+                </div>
+            </div>
+            <div class="tracker-step">
+                <div class="circle">2</div>
                 <div class="label-text">
                     <span>Personal</span>
                     <span>Details</span>
                 </div>
             </div>
             <div class="tracker-step">
-                <div class="circle">2</div>
+                <div class="circle">3</div>
                 <div class="label-text">
                     <span>Order</span>
                     <span>Details</span>
                 </div>
             </div>
             <div class="tracker-step">
-                <div class="circle">3</div>
+                <div class="circle">4</div>
                 <div class="label-text">
                     <span>Shipping &</span>
                     <span>Rates</span>
                 </div>
             </div>
             <div class="tracker-step">
-                <div class="circle">4</div>
+                <div class="circle">5</div>
                 <div class="label-text">
                     <span>Payment &</span>
                     <span>Notes</span>
@@ -564,37 +517,50 @@ button.btn-back:hover {
     </div>
 
     <div class="form-card">
-        
-        <!-- Post-Submission Overlay Interface Block -->
-        <div class="processing-overlay" id="loadingOverlay">
-            <div class="status-indicator">
-                <div class="spinner" id="statusSpinner"></div>
-                <div class="checkmark-tick" id="statusTick"></div>
-            </div>
-            
-            <div class="success-message-block" id="successContent">
-                <h2>Thank you for your purchase</h2>
-                <p class="greeting-subtext" id="customUserGreeting">Hi! Payment is being processed please wait for confirmation.</p>
-                
-                <div class="order-summary" style="text-align: left; margin-bottom: 0;">
-                    <h3>Order Data Summary Receipt</h3>
-                    <p><strong>Order ID:</strong> <span id="receiptOrderID">---</span></p>
-                    <p><strong>Items:</strong> <span id="receiptItems">---</span></p>
-                    <p><strong>Size:</strong> <span id="receiptSize">---</span></p>
-                    <p><strong>Delivery Address:</strong> <span id="receiptAddress">---</span></p>
-                    <p><strong>Payment Method:</strong> <span id="receiptPaymentMethod">---</span></p>
-                    <p><strong>Total Amount Assessed:</strong> $<span id="receiptTotal">0.00</span></p>
-                </div>
-            </div>
-        </div>
-
-        <form method="POST" action="https://formcarry.com/s/bItoDQJaK3C" id="orderForm">
-            
+        <form method="POST" action="https://formcarry.com/s/bItoDQJaK3C">
+           
             <input type="hidden" name="order_id" id="order_id">
             <input type="hidden" name="calculated_total_amount" id="hiddenTotalInput">
 
-            <!-- STEP 1: Personal Details -->
+            <!-- STEP 1: WELCOME INTRO -->
             <div class="step active">
+                
+                <div class="step-header">
+                    <div class="step-logo-bg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <div class="step-title-block">
+                        <h2>Welcome to the Order Hub</h2>
+                        <p>Review the overview before initiating your configuration.</p>
+                    </div>
+                </div>
+
+                <p class="intro-paragraph">
+                    This portal serves as our dedicated and secure framework designed specifically for completing tailored orders through our step-by-step platform.
+                </p>
+
+                <!-- Clickable Expandable Read More Arrow UI Link element -->
+                <button type="button" class="read-more-btn" onclick="toggleReadMore()">
+                    <span>Read more</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+
+                <!-- Dynamic Collapsible block container element -->
+                <div class="collapsible-content" id="readMoreSection">
+                    <p>
+                        Throughout the process, our customer service team remains available to provide guidance, confirm order details, and ensure accurate product allocation and fulfillment.
+                    </p>
+                </div>
+               
+            
+               
+                <div class="form-footer" style="justify-content: flex-end;">
+                    <button type="button" onclick="nextStep()">Begin Order Process →</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: PERSONAL DETAILS -->
+            <div class="step">
                 <div class="step-header">
                     <div class="step-logo-bg">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -610,30 +576,31 @@ button.btn-back:hover {
                         <label>Full Name</label>
                         <div class="input-container">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            <input type="text" name="name" id="userNameInput" placeholder="Enter your full name" required>
+                            <input type="text" name="name" placeholder="Enter your full name">
                         </div>
                     </div>
                     <div>
                         <label>Phone Number</label>
                         <div class="input-container">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .8 2.81A2 2 0 0 1 22 16.92z"></path></svg>
+                            <input type="tel" name="phone" placeholder="Enter your phone number">
                         </div>
                     </div>
                 </div>
-                
+               
                 <label>Delivery Address</label>
                 <div class="input-container">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <textarea name="address" id="addressInput" rows="3" placeholder="Enter your complete delivery address" oninput="updateSummary()" required></textarea>
+                    <textarea name="address" id="addressInput" rows="3" placeholder="Enter your complete delivery address" oninput="updateSummary()"></textarea>
                 </div>
-                
+               
                 <div class="form-footer">
+                    <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
                     <button type="button" onclick="nextStep()">Next →</button>
                 </div>
             </div>
 
-            <!-- STEP 2: Order Details -->
+            <!-- STEP 3: ORDER DETAILS -->
             <div class="step">
                 <div class="step-header">
                     <div class="step-logo-bg">
@@ -641,7 +608,7 @@ button.btn-back:hover {
                     </div>
                     <div class="step-title-block">
                         <h2>Order Details</h2>
-                        <p>Specify the details of the items you are purchasing.</p>
+                        <p>Specify the details of the items you are configurations.</p>
                     </div>
                 </div>
 
@@ -650,27 +617,25 @@ button.btn-back:hover {
                         <label>Item(s) Ordered</label>
                         <div class="input-container">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                            <input type="text" name="items" id="itemsInput" placeholder="e.g. Wireless Headphones" oninput="updateSummary()" required>
+                            <input type="text" name="items" id="itemsInput" placeholder="e.g. Wireless Headphones" oninput="updateSummary()">
                         </div>
                     </div>
                     <div>
                         <label>Size</label>
                         <div class="input-container">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><line x1="5" y1="6" x2="19" y2="6"></line><line x1="5" y1="18" x2="19" y2="18"></line></svg>
-                            <input type="text" name="size" id="sizeInput" placeholder="e.g. Medium / Standard" oninput="updateSummary()" required>
+                            <input type="text" name="size" id="sizeInput" placeholder="e.g. Medium / Standard" oninput="updateSummary()">
                         </div>
                     </div>
                 </div>
-                
+               
                 <div class="form-footer">
-                    <div style="display: flex; gap: 12px;">
-                        <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
-                        <button type="button" onclick="nextStep()">Next →</button>
-                    </div>
+                    <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+                    <button type="button" onclick="nextStep()">Next →</button>
                 </div>
             </div>
 
-            <!-- STEP 3: Shipping & Rates -->
+            <!-- STEP 4: SHIPPING INFORMATION -->
             <div class="step">
                 <div class="step-header">
                     <div class="step-logo-bg">
@@ -688,29 +653,27 @@ button.btn-back:hover {
                     <label>Item Price ($)</label>
                     <div class="input-container">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                        <input type="number" name="item_price" id="itemPriceInput" placeholder="0.00" min="0" step="0.01" oninput="updateSummary()" required>
+                        <input type="number" name="item_price" id="itemPriceInput" placeholder="0.00" min="0" step="0.01" oninput="updateSummary()">
                     </div>
 
                     <label>Shipping Method</label>
                     <div class="input-container">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                        <select name="shipping_method" id="shippingMethodSelect" onchange="updateSummary()" required>
+                        <select name="shipping_method" id="shippingMethodSelect" onchange="updateSummary()">
                             <option value="9">Standard Shipping ($9)</option>
                             <option value="15">Expedited Shipping ($15)</option>
                             <option value="25">Overnight Shipping ($25)</option>
                         </select>
                     </div>
                 </fieldset>
-                
+               
                 <div class="form-footer">
-                    <div style="display: flex; gap: 12px;">
-                        <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
-                        <button type="button" onclick="nextStep()">Next →</button>
-                    </div>
+                    <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+                    <button type="button" onclick="nextStep()">Next →</button>
                 </div>
             </div>
 
-            <!-- STEP 4: Payment & Notes -->
+            <!-- STEP 5: PAYMENT METHOD -->
             <div class="step">
                 <div class="step-header">
                     <div class="step-logo-bg">
@@ -728,7 +691,7 @@ button.btn-back:hover {
                     <label>Payment Method</label>
                     <div class="input-container">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-                        <select name="payment_method" id="paymentMethodSelect" onchange="togglePaymentFields(this.value)" required>
+                        <select name="payment_method" id="paymentMethodSelect" onchange="updateSummary()">
                             <option value="">Select Payment Method</option>
                             <option value="Zelle">Zelle</option>
                             <option value="PayPal">PayPal</option>
@@ -740,25 +703,7 @@ button.btn-back:hover {
                         </select>
                     </div>
 
-                    <div id="paymentDetailsNotice" class="info-notice-paragraph" style="display: none;">
-                        Payment details will be provided.
-                    </div>
-
-                    <div id="paypalFieldBlock" style="display: none;">
-                        <label>PayPal Email / Username Payment Request</label>
-                        <div class="input-container">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-                            <input type="text" id="paypalInput" name="paypal_request_detail" placeholder="Enter PayPal email or username for request">
-                        </div>
-                    </div>
-
-                    <div id="cashappFieldBlock" style="display: none;">
-                        <label>Cash App $Cashtag Payment Request</label>
-                        <div class="input-container">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                            <input type="text" id="cashappInput" name="cashapp_request_detail" placeholder="Enter your $Cashtag for request">
-                        </div>
-                    </div>
+                    <div id="dynamicPaymentFields"></div>
 
                     <div class="order-summary">
                         <h3>Review Your Order Confirmation</h3>
@@ -766,7 +711,7 @@ button.btn-back:hover {
                         <p><strong>Items:</strong> <span id="summaryItems">---</span></p>
                         <p><strong>Size:</strong> <span id="summarySize">---</span></p>
                         <p><strong>Delivery Address:</strong> <span id="summaryAddress">---</span></p>
-                        <p><strong>Payment Method:</strong> <span id="summaryPaymentMethod">---</span></p>
+                        <p><strong>Payment Method:</strong> <span id="summaryPayment">---</span></p>
                         <p><strong>Total Amount:</strong> $<span id="summaryTotal">0.00</span></p>
                     </div>
 
@@ -778,19 +723,14 @@ button.btn-back:hover {
                 </fieldset>
 
                 <div class="form-footer">
-                    <div style="display: flex; gap: 12px;">
-                        <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
-                        <button type="submit">Submit Order</button>
-                    </div>
+                    <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+                    <button type="submit">Submit Order</button>
                 </div>
             </div>
 
         </form>
     </div>
 
-    <div class="trademark-footer">
-        &copy; contantpractice&trade; All Rights Reserved
-    </div>
 
 </div>
 
@@ -799,14 +739,28 @@ let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 const trackerSteps = document.querySelectorAll(".tracker-step");
 const progressLineFill = document.getElementById("activeProgressLine");
+const progressTrackerSection = document.getElementById("progressTrackerSection");
 
 window.onload = function() {
     const randomID = "ORD-" + Math.floor(100000 + Math.random() * 900000);
     document.getElementById("order_id").value = randomID;
     document.getElementById("summaryOrderID").innerText = randomID;
-    document.getElementById("receiptOrderID").innerText = randomID;
-    showStep(0); 
+    showStep(0);
 };
+
+// Toggle the Expandable read-more text wrapper container element layout view state height matrix smoothly
+function toggleReadMore() {
+    const section = document.getElementById("readMoreSection");
+    const btn = document.querySelector(".read-more-btn");
+    
+    if (section.style.maxHeight && section.style.maxHeight !== "0px") {
+        section.style.maxHeight = "0px";
+        btn.classList.remove("expanded");
+    } else {
+        section.style.maxHeight = section.scrollHeight + "px";
+        btn.classList.add("expanded");
+    }
+}
 
 function showStep(step) {
     steps.forEach((s, index) => {
@@ -819,39 +773,15 @@ function showStep(step) {
 
     let linePercent = (step / (steps.length - 1)) * 100;
     progressLineFill.style.width = linePercent + "%";
-}
 
-function validateCurrentStep() {
-    const activeStepContainer = steps[currentStep];
-    const inputsToValidate = activeStepContainer.querySelectorAll("input[required], textarea[required], select[required]");
-    let isStepValid = true;
-
-    inputsToValidate.forEach(input => {
-        if (input.offsetWidth > 0 || input.offsetHeight > 0) {
-            if (!input.value.trim()) {
-                isStepValid = false;
-                input.classList.add("invalid");
-                
-                input.addEventListener("input", function removeAlert() {
-                    if (this.value.trim()) {
-                        this.classList.remove("invalid");
-                        input.removeEventListener("input", removeAlert);
-                    }
-                });
-            } else {
-                input.classList.remove("invalid");
-            }
-        }
-    });
-
-    return isStepValid;
+    if (step === 0) {
+        progressTrackerSection.style.display = "none";
+    } else {
+        progressTrackerSection.style.display = "block";
+    }
 }
 
 function nextStep() {
-    if (!validateCurrentStep()) {
-        return; 
-    }
-
     if (currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);
@@ -866,110 +796,53 @@ function prevStep() {
 }
 
 function updateSummary() {
-    const itemsVal = document.getElementById("itemsInput").value || "---";
-    const sizeVal = document.getElementById("sizeInput").value || "---";
-    const addressVal = document.getElementById("addressInput").value || "---";
+    const paymentMethod = document.getElementById("paymentMethodSelect").value;
     
-    document.getElementById("summaryItems").innerText = itemsVal;
-    document.getElementById("summarySize").innerText = sizeVal;
-    document.getElementById("summaryAddress").innerText = addressVal;
-    
-    document.getElementById("receiptItems").innerText = itemsVal;
-    document.getElementById("receiptSize").innerText = sizeVal;
-    document.getElementById("receiptAddress").innerText = addressVal;
-    
+    document.getElementById("summaryItems").innerText = document.getElementById("itemsInput").value || "---";
+    document.getElementById("summarySize").innerText = document.getElementById("sizeInput").value || "---";
+    document.getElementById("summaryAddress").innerText = document.getElementById("addressInput").value || "---";
+    document.getElementById("summaryPayment").innerText = paymentMethod || "---";
+   
     const itemPrice = parseFloat(document.getElementById("itemPriceInput").value) || 0;
     const shippingCost = parseFloat(document.getElementById("shippingMethodSelect").value) || 9;
     const totalAmount = itemPrice + shippingCost;
+   
+    document.getElementById("summaryTotal").innerText = totalAmount.toFixed(2);
+    document.getElementById("hiddenTotalInput").value = totalAmount.toFixed(2);
+
+    const dynamicContainer = document.getElementById("dynamicPaymentFields");
     
-    const optimizedTotalString = totalAmount.toFixed(2);
-    document.getElementById("summaryTotal").innerText = optimizedTotalString;
-    document.getElementById("receiptTotal").innerText = optimizedTotalString;
-    document.getElementById("hiddenTotalInput").value = optimizedTotalString;
-}
-
-function togglePaymentFields(selectedMethod) {
-    const paypalBlock = document.getElementById("paypalFieldBlock");
-    const cashappBlock = document.getElementById("cashappFieldBlock");
-    const noticeBlock = document.getElementById("paymentDetailsNotice");
-    const summaryPayment = document.getElementById("summaryPaymentMethod");
-    const receiptPayment = document.getElementById("receiptPaymentMethod");
-    
-    const paypalInput = document.getElementById("paypalInput");
-    const cashappInput = document.getElementById("cashappInput");
-
-    paypalBlock.style.display = "none";
-    cashappBlock.style.display = "none";
-    noticeBlock.style.display = "none";
-    
-    paypalInput.removeAttribute("required");
-    cashappInput.removeAttribute("required");
-
-    summaryPayment.innerText = selectedMethod || "---";
-    receiptPayment.innerText = selectedMethod || "---";
-
-    if (selectedMethod === "PayPal") {
-        paypalBlock.style.display = "block";
-        paypalInput.setAttribute("required", "true");
-    } else if (selectedMethod === "Cash App") {
-        cashappBlock.style.display = "block";
-        cashappInput.setAttribute("required", "true");
-    } else if (selectedMethod === "Zelle" || selectedMethod === "E-transfer" || selectedMethod === "Bank Transfer") {
-        noticeBlock.style.display = "block";
-    }
-}
-
-function toggleIntroText() {
-    const textPreview = document.getElementById("introPreview");
-    const textMore = document.getElementById("introMore");
-    const toggleBtn = document.getElementById("readMoreToggle");
-
-    if (textMore.style.display === "inline") {
-        textMore.style.display = "none";
-        textPreview.innerHTML = "If the item you are looking for is currently out of stock or unavailable on our website, you can use this secure system to place an offline request. Our team will manually check our inventory network to fulfill your order...";
-        toggleBtn.innerText = "Read More";
+    if (paymentMethod === "Cash App") {
+        dynamicContainer.innerHTML = `
+            <fieldset style="margin-bottom: 24px; animation: fadeIn 0.3s ease;">
+                <label>Cash App Handle</label>
+                <div class="input-container">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <input type="text" name="cashapp_tag" placeholder="Enter your $Cashtag for payment request" required>
+                </div>
+            </fieldset>
+        `;
+    } else if (paymentMethod === "PayPal") {
+        dynamicContainer.innerHTML = `
+            <fieldset style="margin-bottom: 24px; animation: fadeIn 0.3s ease;">
+                <label>PayPal Account Details</label>
+                <div class="input-container">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <input type="text" name="paypal_info" placeholder="Enter your PayPal Email or Phone number" required>
+                </div>
+            </fieldset>
+        `;
+    } else if (paymentMethod !== "") {
+        dynamicContainer.innerHTML = `
+            <div class="email-notice-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Payment details will be sent to your email.</span>
+            </div>
+        `;
     } else {
-        textMore.style.display = "inline";
-        textPreview.innerHTML = "If the item you are looking for is currently out of stock or unavailable on our website, you can use this secure system to place an offline request. Our team will manually check our inventory network to fulfill your order. ";
-        toggleBtn.innerText = "Read Less";
+        dynamicContainer.innerHTML = "";
     }
 }
-
-document.getElementById("orderForm").addEventListener("submit", function(e) {
-    e.preventDefault(); 
-    
-    if (!validateCurrentStep()) {
-        return;
-    }
-
-    const fullNameString = document.getElementById("userNameInput").value.trim();
-    const firstName = fullNameString.split(" ")[0] || "Customer";
-
-    document.getElementById("customUserGreeting").innerHTML = `Hi <strong>${firstName}</strong>! Payment is being processed please wait for confirmation.`;
-
-    document.getElementById("loadingOverlay").style.display = "flex";
-    document.getElementById("trackerUiContainer").style.opacity = "0.3";
-    document.getElementById("introStaticBlock").style.opacity = "0.3";
-
-    const formElement = this;
-
-    setTimeout(function() {
-        document.getElementById("statusSpinner").style.display = "none";
-        document.getElementById("statusTick").style.display = "block";
-
-        setTimeout(function() {
-            const successContent = document.getElementById("successContent");
-            successContent.style.display = "block";
-            setTimeout(() => { successContent.style.opacity = "1"; }, 50);
-
-            setTimeout(function() {
-                formElement.submit();
-            }, 4500);
-
-        }, 500);
-
-    }, 2500);
-});
 </script>
 
 </body>
