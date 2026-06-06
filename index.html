@@ -782,6 +782,40 @@ function showStep(step) {
 }
 
 function nextStep() {
+
+    // Step 2 validation
+    if (currentStep === 1) {
+        const name = document.querySelector('input[name="name"]').value.trim();
+        const phone = document.querySelector('input[name="phone"]').value.trim();
+        const address = document.getElementById("addressInput").value.trim();
+
+        if (!name || !phone || !address) {
+            alert("Please complete all Personal Details before continuing.");
+            return;
+        }
+    }
+
+    // Step 3 validation
+    if (currentStep === 2) {
+        const items = document.getElementById("itemsInput").value.trim();
+        const size = document.getElementById("sizeInput").value.trim();
+
+        if (!items || !size) {
+            alert("Please complete all Order Details before continuing.");
+            return;
+        }
+    }
+
+    // Step 4 validation
+    if (currentStep === 3) {
+        const price = document.getElementById("itemPriceInput").value;
+
+        if (!price || Number(price) <= 0) {
+            alert("Please complete the Shipping Information before proceeding.");
+            return;
+        }
+    }
+
     if (currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);
