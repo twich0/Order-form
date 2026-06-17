@@ -151,6 +151,41 @@ body {
     padding-bottom: 25px;
 }
 
+/* Tooltip & Icon Wrapper Container */
+.logo-tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Comment Cloud / Speech Bubble */
+.comment-cloud {
+    position: absolute;
+    bottom: calc(100% + 10px); /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Small triangle pointer for the cloud */
+.comment-cloud::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #0f172a transparent transparent transparent;
+}
+
 .step-logo-bg {
     background-color: #2563eb;
     color: white;
@@ -533,10 +568,14 @@ button.btn-back:hover {
             <div class="step active">
                 
                 <div class="step-header">
-                    <!-- main -->
-                    <a href="https://l.instagram.com/?u=https%3A%2F%2Fpsylos1.com%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnhsb3w7akrD2eQOhwufPi5IaUSWxU6nfzWtfYvQw97wCYSjgqWpPzFew60Uk_aem_OVL3mHApTh0otJeM8szBoQ&e=AUCGJRGuhqq42Nesz9fGxXAkl5ulvbzVSs7QxygXpeasNfPqWGovGoCMAOespbcjFR4pTWSpkziEGunBS1GAXwNfmLhZXE6YboZCudoelKYA8P_Xgapa-DkVhRd54E1e3uz8X0c" class="step-logo-bg" title="Go to home site">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    </a>
+                    <div class="logo-tooltip-wrapper">
+                        <!-- Comment Cloud / Speech Bubble -->
+                        <div class="comment-cloud">main</div>
+                        
+                        <a href="https://l.instagram.com/?u=https%3A%2F%2Fpsylos1.com%2F%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnhsb3w7akrD2eQOhwufPi5IaUSWxU6nfzWtfYvQw97wCYSjgqWpPzFew60Uk_aem_OVL3mHApTh0otJeM8szBoQ&e=AUCGJRGuhqq42Nesz9fGxXAkl5ulvbzVSs7QxygXpeasNfPqWGovGoCMAOespbcjFR4pTWSpkziEGunBS1GAXwNfmLhZXE6YboZCudoelKYA8P_Xgapa-DkVhRd54E1e3uz8X0c" class="step-logo-bg" title="Go to home site">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </a>
+                    </div>
                     <div class="step-title-block">
                         <h2>Welcome to the Order Hub</h2>
                         <p>Review before submission</p>
